@@ -30,7 +30,8 @@ setup(
     packages=["beamplan"],
     include_package_data=True,
     install_requires=[
-        "pycodestyle==2.5.0"
+        "pycodestyle==2.5.0",
+        "click==7.1.2"
     ],
     entry_points={
         "console_scripts": [
