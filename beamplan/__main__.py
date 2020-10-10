@@ -50,5 +50,3 @@ def main(infile, debug):
     except OSError as e:
         print("OSError: {}".format(e))
         exit()
-
-    print("I'm good")

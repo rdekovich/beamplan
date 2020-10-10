@@ -20,7 +20,7 @@ def validateInfile(infile):
     
     Raises:
         OSError -- User provides input file/path that does not exist
-        OSErrpr -- User provided a path that was not a file
+        OSError -- User provided a path that was not a file
     """
 
     # Validate existance of the path provided
