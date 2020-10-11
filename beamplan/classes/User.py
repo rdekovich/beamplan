@@ -37,6 +37,11 @@ class User(Entity):
         self.possibleInterferences = []
     
     def __str__(self):
+        """
+        Overload of the special variable __str__.
+
+        Will print out what is returned when a User is printed (e.g. print(User))
+        """
         return "possible interferences: {}".format(self.possibleInterferences)
     
     def addPossibleInterference(self, interferenceID):
@@ -50,3 +55,9 @@ class User(Entity):
         Removes a possible interference that the user will not encounter anymore
         """
         self.possibleInterferences.remove(interferenceID)
+    
+    def getPossibleInterferences(self):
+        """
+        Returns the list of possible interferences for this user
+        """
+        return self.possibleInterferences

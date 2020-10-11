@@ -43,6 +43,11 @@ class Sattelite(Entity):
         self.viableUsers = []
     
     def __str__(self):
+        """
+        Overload of the special variable __str__.
+
+        Will print out what is returned when a Sattelite is printed (e.g. print(Sattelite))
+        """
         return "viable users: {}".format(self.viableUsers)
     
     def addViableUser(self, userID):
@@ -56,3 +61,9 @@ class Sattelite(Entity):
         Remove a viable user from the list of viable users
         """
         self.viableUsers.remove(userID)
+    
+    def getViableUsers(self):
+        """
+        Returns the list of viable users
+        """
+        return self.viableUsers

@@ -11,8 +11,9 @@ __status__ = "Development"
 
 from beamplan.classes.User import User
 from beamplan.classes.Sattelite import Sattelite
+from beamplan.classes.Interference import Interference
 from beamplan.classes.Entity import Entity
-from beamplan import origin, userVisibleAngle
+from beamplan import origin, userVisibleAngle, externalInterferenceAngle
 
 from math import sqrt, acos, degrees, floor
 
@@ -66,3 +67,19 @@ def satteliteIsVisible(user: User, sattelite: Sattelite):
     """
 
     return calculateAngle(user, origin, sattelite) > 180.0 - userVisibleAngle
+
+def isExternalInterference(user: User, interference: Interference, sattelite: Sattelite):
+    """
+    Determines if there is an external interference between the user and the sattelite,
+    given a possible interference.
+
+    Arguments:
+        user (User) -- user object for the user in question
+        interference (Interference) - interference object for the interference in question
+        sattelite (Sattelite) - sattelite object for the sattelite in question
+    
+    Returns:
+        (boolean) -- True if there is an interference, False if there is not
+    """
+
+    return not (calculateAngle(user, sattelite, interference) < externalInterferenceAngle)
