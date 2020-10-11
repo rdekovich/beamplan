@@ -83,6 +83,31 @@ def main(infile, debug):
             # Acquire the list of possible interferences for this user
             possibleInterferences = users[viableUserID].getPossibleInterferences()
 
-            # For each possible interference
-            for interferenceID, interference in interferences.items():
+            # For each possible interference that the user can have
+            for interferenceID in possibleInterferences:
                 # If there is an external interference between these..
+                if isExternalInterference(users[viableUserID], interferences[interferenceID], sattelite):
+                    # Remove this user from the list of viable users for this sattelite
+                    sattelite.removeViableUser(viableUserID)
+                    break
+    
+    # Create an empty dictionary, mapping users to sattelites (beams)
+    existing = {}
+
+    def getUser(userID):
+        """
+        Returns the User object of a given userID
+        """
+        return users[userID]
+        
+    # For each sattelite
+    for _, sattelite in sattelites.items():
+        # Connect to as many beams as possible given the constraints
+        sattelite.beamFactory(existing, getUser)
+    
+    # For each sattelite
+    for _, sattelite in sattelites.items():
+        # For each of the beams in the sattelites
+        for beam in sattelite.getBeams():
+            print(beam)
+    

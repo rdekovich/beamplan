@@ -21,9 +21,6 @@ origin = Entity(None, 0, 0, 0, None)
 """The number of beams allowed per sattelite (synonymous to # of connections)"""
 beamsPerSattelite = 32
 
-"""A list of valid beam IDs (e.g. 1 through 32)"""
-validBeamIDs = [str(i) for i in range(1, beamsPerSattelite + 1)]
-
 """The number of colors of beams per sattelite"""
 numColorsPerSattelite = 4
 
