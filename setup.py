@@ -1,16 +1,11 @@
-#!/usr/bin/env python3.9
+#!/usr/bin/env python
 
 """
 Setup package installation file for the beamplan package.
 
-Module can be invoked in two ways.  First, it can be
-called by invoking the interpreter directly.  This is
-done by the following:
-
-$ ./setup.py
-
-It can also be invoked via pip.  This can be done by the
-following:
+The module is best invoked in a sourced virtual environment,
+that way, all your scripts and site-package folders will be
+within the project directory.  The invocation is as follows:
 
 $ pip install -e .
 """

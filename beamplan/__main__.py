@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.9
+#!/usr/bin/env python
 
 """
 Main module called upon invocation to the beamplan package.
@@ -55,5 +55,3 @@ def main(infile, debug):
     
     # Parse the input file into it's respective mappings and classes
     users, sattelites, interferences = parseInfile(abspath(infile))
-
-    print("sattelites: {}, users: {}, intereferences: {}".format(sattelites, users, interferences))
