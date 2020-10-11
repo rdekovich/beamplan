@@ -127,7 +127,7 @@ The following table is all invocation options, with examples using them.
 | -------- | -------- | ----------- | ------- |
 | INFILE   | Yes      | Input file to the beamplan tool | `$ beamplan infile.txt` |
 | --debug, -d | No    | Routes stdout to an output file `INFILE.out` | `$ beamplan infile.txt --debug`
-| --help, -h | No | Package help string for this table | `$ beamplan --help` |
+| --help | No | Package help string for this table | `$ beamplan --help` |
 
 #
 

@@ -154,3 +154,7 @@ Checking no sat interferes with a non-Starlink satellite...
 	No satellite interferes with a non-Starlink satellite!
 
 Solution passed all checks!
+
+Reading scenario file C:\Users\Robert Dekovich\src\spacex\beamplan\var\tests\output.txt
+Invalid line! Test output
+
