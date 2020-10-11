@@ -68,7 +68,7 @@ def parseLineIntoClass(line, num, type):
         outputClass = Interference(id, x, y, z)
     else:
         # Valid, but should NEVER happen!
-        outputClass = Entity(id, x, y, z)
+        outputClass = Entity(id, x, y, z, None)
     
     return outputClass
 

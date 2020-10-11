@@ -55,3 +55,5 @@ def main(infile, debug):
     
     # Parse the input file into it's respective mappings and classes
     users, sattelites, interferences = parseInfile(abspath(infile))
+
+    print("sattelites: {}, users: {}, intereferences: {}".format(sattelites, users, interferences))

@@ -14,7 +14,7 @@ class Entity:
     or a child.
     """
 
-    def __init__(self, id, x, y, z, type):
+    def __init__(self, id, x, y, z, type=None):
         """
         Initializes the Entity class with it's X, Y and Z coordinates, along
         with it's unique ID.
