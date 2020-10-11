@@ -25,6 +25,7 @@ from os.path import abspath
 
 from beamplan.modules.validate import validateInfile
 from beamplan.modules.parse import parseInfile
+from beamplan.modules.measurement import satteliteIsVisible
 
 @click.command(help="A command-line tool to determine Starlink beam planning.")
 @click.argument("infile")
@@ -55,3 +56,19 @@ def main(infile, debug):
     
     # Parse the input file into it's respective mappings and classes
     users, sattelites, interferences = parseInfile(abspath(infile))
+
+    # For each of the users
+    for userID, user in users.items():
+        # For each of the sattelites
+        for _, sattelite in sattelites.items():
+            # If this sattelite is visible to this user (constraint)
+            if satteliteIsVisible(user, sattelite):
+                # Add this user to the list of viable users for this sattelite
+                sattelite.addViableUser(userID)
+        
+        # For each of the interferences
+        for interferenceID, interference in interferences.items():
+            # If this sattelite is visible to this user (constraint)
+            if satteliteIsVisible(user, interference):
+                # Add this interference to the list of possibilities for the user
+                user.addPossibleInterference(interferenceID)

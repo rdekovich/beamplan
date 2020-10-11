@@ -6,6 +6,10 @@ that is an Entity, and is a interference to the constraint
 problem of the Starlink sattelites.
 """
 
+__author__ = "Robert Dekovich"
+__email__ = "dekovich@umich.edu"
+__status__ = "Development"
+
 from beamplan.classes.Entity import Entity
 
 class Interference(Entity):

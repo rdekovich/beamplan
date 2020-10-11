@@ -5,6 +5,10 @@ The following are functions that are to be used exclusively for the beamplan
 package, and thus cannot be invoked via interpreter, but rather imported.
 """
 
+__author__ = "Robert Dekovich"
+__email__ = "dekovich@umich.edu"
+__status__ = "Development"
+
 from beamplan.classes.Entity import Entity
 from beamplan.classes.User import User
 from beamplan.classes.Sattelite import Sattelite

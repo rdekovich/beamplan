@@ -6,6 +6,10 @@ on Earth.  Their coordinates are on the assumed round-earth.
 All user norms pass through the center of the earth (0,0,0).
 """
 
+__author__ = "Robert Dekovich"
+__email__ = "dekovich@umich.edu"
+__status__ = "Development"
+
 from beamplan.classes.Entity import Entity
 
 class User(Entity):
@@ -28,3 +32,21 @@ class User(Entity):
         """
         
         super().__init__(id, x, y, z, "user")
+
+        # Define a list of possible interferences that this user may run into
+        self.possibleInterferences = []
+    
+    def __str__(self):
+        return "possible interferences: {}".format(self.possibleInterferences)
+    
+    def addPossibleInterference(self, interferenceID):
+        """
+        Adds a possible interference that the user may encounter
+        """
+        self.possibleInterferences.append(interferenceID)
+    
+    def removePossibleInterference(self, interferenceID):
+        """
+        Removes a possible interference that the user will not encounter anymore
+        """
+        self.possibleInterferences.remove(interferenceID)

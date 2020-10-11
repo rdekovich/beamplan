@@ -5,6 +5,10 @@ A Sattelite defined in the broadest sense is a sattelite
 that is an Entity, and is above Earth in orbit.
 """
 
+__author__ = "Robert Dekovich"
+__email__ = "dekovich@umich.edu"
+__status__ = "Development"
+
 from beamplan.classes.Entity import Entity
 
 class Sattelite(Entity):
@@ -34,3 +38,21 @@ class Sattelite(Entity):
         """
         
         super().__init__(id, x, y, z, "sattelite")
+
+        # Define a list of viable users this sattelite can satisfy with
+        self.viableUsers = []
+    
+    def __str__(self):
+        return "viable users: {}".format(self.viableUsers)
+    
+    def addViableUser(self, userID):
+        """
+        Add a viable user to the list of viable users
+        """
+        self.viableUsers.append(userID)
+    
+    def removeViableUser(self, userID):
+        """
+        Remove a viable user from the list of viable users
+        """
+        self.viableUsers.remove(userID)

@@ -5,6 +5,10 @@ An Entity defined in the broadest sense is an object
 that exists ECEF coordinate-space.
 """
 
+__author__ = "Robert Dekovich"
+__email__ = "dekovich@umich.edu"
+__status__ = "Development"
+
 class Entity:
     """
     A parent object that exists within the ECEF coordinate space.
@@ -44,3 +48,21 @@ class Entity:
         Returns the stored type of the Entity
         """
         return self.type
+    
+    def getX(self):
+        """
+        Returns the stored x-coordinate of the entity
+        """
+        return self.x
+    
+    def getY(self):
+        """
+        Returns the stored y-coordinate of the entity
+        """
+        return self.y
+    
+    def getZ(self):
+        """
+        Returns the stored z-coordinate of the entity
+        """
+        return self.z
