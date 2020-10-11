@@ -32,6 +32,3 @@ class User(Entity):
         """
         
         super().__init__(id, x, y, z, "user")
-
-        # Define a list of possible interferences that this user may run into
-        self.possibleInterferences = []
