@@ -51,31 +51,31 @@ def calculateAngle(v: Entity, a: Entity, b: Entity):
     
     return degrees(acos(dotProductBoundAB))
 
-def satteliteIsVisible(user: Entity, sattelite: Entity):
+def satelliteIsVisible(user: Entity, satellite: Entity):
     """
-    Determines if the sattelite is visible to the user, given the constraints
+    Determines if the satellite is visible to the user, given the constraints
 
     Arguments:
         user (Entity) -- user object for the user in question
-        sattelite (Entity) -- sattelite object in question
+        satellite (Entity) -- satellite object in question
     
     Returns:
-        (boolean) -- True if the sattelite is visible to the user, False otherwise 
+        (boolean) -- True if the satellite is visible to the user, False otherwise
     """
 
-    return not (calculateAngle(user, origin, sattelite) <= 180.0 - userVisibleAngle)
+    return not (calculateAngle(user, origin, satellite) <= 180.0 - userVisibleAngle)
 
-def isExternalInterference(user: Entity, interference: Entity, sattelite: Entity):
+def isExternalInterference(user: Entity, interference: Entity, satellite: Entity):
     """
-    Determines if there is an external interference between the user and the sattelite,
+    Determines if there is an external interference between the user and the satellite,
     given a possible interference.
 
     Arguments:
         user (Entity) -- user object for the user in question
         interference (Entity) - interference object for the interference in question
-        sattelite (Entity) - sattelite object for the sattelite in question
+        satellite (Entity) - satellite object for the satellite in question
     
     Returns:
         (boolean) -- True if there is an interference, False if there is not
     """
-    return calculateAngle(user, sattelite, interference) < externalInterferenceAngle
+    return calculateAngle(user, satellite, interference) < externalInterferenceAngle

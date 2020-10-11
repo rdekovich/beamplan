@@ -23,7 +23,7 @@ def validateInfile(infile):
         OSError -- User provided a path that was not a file
     """
 
-    # Validate existance of the path provided
+    # Validate existence of the path provided
     if path.exists(infile):
         # Validate that path provided is indeed a file
         if path.isfile(infile):

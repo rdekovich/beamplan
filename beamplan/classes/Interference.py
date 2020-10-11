@@ -1,9 +1,9 @@
 """
-Class definition for the Sattelite child class (of Entity).
+Class definition for the Satellite child class (of Entity).
 
-An Interference defined in the broadest sense is a sattelite
+An Interference defined in the broadest sense is a satellite
 that is an Entity, and is a interference to the constraint
-problem of the Starlink sattelites.
+problem of the Starlink satellites.
 """
 
 __author__ = "Robert Dekovich"
@@ -17,9 +17,9 @@ class Interference(Entity):
     A child of Entity that signifies an interfering constraint in LEO.
 
     This class possesses additional data and methods, on top of the
-    parent Entity.  An interference sattelite is an entity that must
+    parent Entity.  An interference satellite is an entity that must
     be avoided in terms of beams and beam-density.  The beams of
-    Starlink sattelites must not be within 20 degrees of any of these.
+    Starlink satellites must not be within 20 degrees of any of these.
     """
 
     def __init__(self, id, x, y, z):

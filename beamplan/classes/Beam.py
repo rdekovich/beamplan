@@ -2,7 +2,7 @@
 Class definition for the Beam class.
 
 A Beam is defined as a "made" connection between
-a sattelite and a user.
+a satellite and a user.
 """
 
 __author__ = "Robert Dekovich"
@@ -13,23 +13,23 @@ class Beam:
     """
     A class representing the data associated with a Beam object.
 
-    A Beam is a connection made between a Sattelite and a User.  It
+    A Beam is a connection made between a Satellite and a User.  It
     has metadata associated with it's connection to link it back to
     what it is connected to.
     """
 
-    def __init__(self, beamID, satteliteID, userID, color):
+    def __init__(self, beamID, satelliteID, userID, color):
         """
         Initializes a Beam class to with a set of parameters.
 
         Args:
-            beamID {str} -- the ID (number) of the beam on the Sattelite
-            satteliteID {int} -- the ID (number) of the Sattelite connection
+            beamID {str} -- the ID (number) of the beam on the Satellite
+            satelliteID {int} -- the ID (number) of the Satellite connection
             userID {int} -- the ID (number) of the User being connected to
             color {str} -- the color of the beam
         """
         self.beamID = beamID
-        self.satteliteID = satteliteID
+        self.satelliteID = satelliteID
         self.userID = userID
         self.color = color
     
@@ -39,7 +39,7 @@ class Beam:
 
         When print(Beam) is called, it will print the return value of this.
         """
-        return "sat {} beam {} user {} color {}".format(self.satteliteID, self.beamID, self.userID, self.color)
+        return "sat {} beam {} user {} color {}".format(self.satelliteID, self.beamID, self.userID, self.color)
     
     def getColor(self):
         """

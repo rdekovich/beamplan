@@ -4,7 +4,7 @@
 Main module called upon invocation to the beamplan package.
 
 The beamplan package takes in a single text file containing
-scenarios, providing sattelites, users and interferences - 
+scenarios, providing satellites, users and interferences -
 along with their respective locations.
 
 The package parses the input, and determines how to best place
@@ -25,7 +25,8 @@ from os.path import abspath
 
 from beamplan.modules.validate import validateInfile
 from beamplan.modules.parse import parseInfile
-from beamplan.modules.measurement import satteliteIsVisible, isExternalInterference
+from beamplan.modules.measurement import satelliteIsVisible, isExternalInterference
+
 
 @click.command(help="A command-line tool to determine Starlink beam planning.")
 @click.argument("infile")
@@ -55,33 +56,33 @@ def main(infile, debug):
         exit()
     
     # Parse the input file into it's respective mappings and classes
-    users, sattelites, interferences = parseInfile(abspath(infile))
+    users, satellites, interferences = parseInfile(abspath(infile))
 
-    # For each of the users (Runtime: numUsers * max(numSattelites, numInterferences))
+    # For each of the users (Runtime: numUsers * max(numSatellites, numInterferences))
     for userID, user in users.items():
-        # For each of the sattelites
-        for _, sattelite in sattelites.items():
-            # If this sattelite is visible to this user (constraint)
-            if satteliteIsVisible(user, sattelite):
-                # Add this user to the list of viable users for this sattelite
-                sattelite.addViableUser(userID)
+        # For each of the satellites
+        for _, satellite in satellites.items():
+            # If this satellite is visible to this user (constraint)
+            if satelliteIsVisible(user, satellite):
+                # Add this user to the list of viable users for this satellite
+                satellite.addViableUser(userID)
     
-    # For each sattelite (Runtime: numSattelites * numViableUsers[N] * numPossInterference[N])
-    for _, sattelite in sattelites.items():
-        # Acquire a copy of the viable users of the sattelite
-        viableUsers = sattelite.getViableUsers().copy()
+    # For each satellite (Runtime: numSatellites * numViableUsers[N] * numPossInterference[N])
+    for _, satellite in satellites.items():
+        # Acquire a copy of the viable users of the satellite
+        viableUsers = satellite.getViableUsers().copy()
 
-        # For each of the viable users for this sattelite
+        # For each of the viable users for this satellite
         for viableUserID in viableUsers:
             # For each possible interference that the user can have
             for _, interference in interferences.items():
                 # If there is an external interference between these..
-                if isExternalInterference(users[viableUserID], interference, sattelite):
-                    # Remove this user from the list of viable users for this sattelite
-                    sattelite.removeViableUser(viableUserID)
+                if isExternalInterference(users[viableUserID], interference, satellite):
+                    # Remove this user from the list of viable users for this satellite
+                    satellite.removeViableUser(viableUserID)
                     break
     
-    # Create an empty dictionary, mapping users to sattelites (beams)
+    # Create an empty dictionary, mapping users to satellites (beams)
     existing = {}
 
     def getUser(userID):
@@ -90,10 +91,10 @@ def main(infile, debug):
         """
         return users[userID]
         
-    # For each sattelite
-    for _, sattelite in sattelites.items():
+    # For each satellite
+    for _, satellite in satellites.items():
         # Connect to as many beams as possible given the constraints
-        sattelite.beamFactory(existing, getUser)
+        existing = satellite.beamFactory(existing, getUser)
     
     # If the user specific debug mode
     outfile = None
@@ -101,10 +102,10 @@ def main(infile, debug):
         # Open an output file (and create it) in the same place as the infile
         outfile = open(abspath(infile) + '.out', 'w')
     
-    # For each sattelite
-    for _, sattelite in sattelites.items():
-        # For each of the beams in the sattelites
-        for beam in sattelite.getBeams():
+    # For each satellite
+    for _, satellite in satellites.items():
+        # For each of the beams in the satellites
+        for beam in satellite.getBeams():
             # If the user specified debug mode
             if debug:
                 outfile.write("{}\n".format(beam))

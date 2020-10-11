@@ -11,7 +11,7 @@ __status__ = "Development"
 
 from beamplan.classes.Entity import Entity
 from beamplan.classes.User import User
-from beamplan.classes.Sattelite import Sattelite
+from beamplan.classes.Satellite import Satellite
 from beamplan.classes.Interference import Interference
 
 def parseLineIntoClass(line, num, type):
@@ -21,14 +21,14 @@ def parseLineIntoClass(line, num, type):
     Arguments:
         line {string} -- line of the input file to parse into information
         num {int} -- line number of the line provided (debugging purposes)
-        type {"user", "sattelite", "interference"} -- type of class to load into
+        type {"user", "satellite", "interference"} -- type of class to load into
     
     Raises:
         ValueError -- bad ID provided (cannot convert)
         ValueError -- bad x-coordinate, y-coordinate or z-coordinate (cannot convert)
     
     Returns:
-        {User, Sattelite, Interference} - child class of Entity of the object parsed
+        {User, Satellite, Interference} - child class of Entity of the object parsed
     """
     id = None
     x = None
@@ -66,8 +66,8 @@ def parseLineIntoClass(line, num, type):
     # Create the proper output class for the line
     if type == "user":
         outputClass = User(id, x, y, z)
-    elif type == "sattelite":
-        outputClass = Sattelite(id, x, y, z)
+    elif type == "satellite":
+        outputClass = Satellite(id, x, y, z)
     elif type == "interference":
         outputClass = Interference(id, x, y, z)
     else:
@@ -87,19 +87,19 @@ def parseInfile(infile):
 
     User: 
         An Earth-bound entity that is trying to connect to Starlink
-    Sattelite: 
-        A Starlink sattelite attempting to reciprocate requests via beams
+    Satellite:
+        A Starlink satellite attempting to reciprocate requests via beams
     Interference:
-        An external sattelite to be avoided in constraining the beams for Starlink
+        An external satellite to be avoided in constraining the beams for Starlink
 
     Arguments:
         infile {string} -- absolute path of the input file to be parsed
     
     Returns:
-        TODO
+        {Entity, Entity, Entity} -- tuple of Entity parent/child objects
     """
     users = {}
-    sattelites = {}
+    satellites = {}
     interferences = {}
 
     try:
@@ -118,11 +118,11 @@ def parseInfile(infile):
                     # Add it to the user mapping
                     users[user.getID()] = user
                 elif "sat" in line:
-                    # Parse the line, populate a Sattelite class
-                    sattelite = parseLineIntoClass(line, num, "sattelite")
+                    # Parse the line, populate a Satellite class
+                    satellite = parseLineIntoClass(line, num, "satellite")
 
-                    # Add it to the sattelite mapping
-                    sattelites[sattelite.getID()] = sattelite
+                    # Add it to the satellite mapping
+                    satellites[satellite.getID()] = satellite
                 elif "interferer" in line:
                     # Parse the line, populate an Interference class
                     interference = parseLineIntoClass(line, num, "interference")
@@ -136,4 +136,4 @@ def parseInfile(infile):
         print(e)
         exit()
 
-    return users, sattelites, interferences
+    return users, satellites, interferences
