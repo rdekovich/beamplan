@@ -135,17 +135,17 @@ The following table is all invocation options, with examples using them.
 
 The following table outlines the heuristic coverages achieved with the given version(s).  All constraints are met, and each test allocates less than 1GB memory and runs less than 15 minutes.
 
-| Test | v0 |
-| ---- | -- |
-| 00_example.txt | 100% |
-| 01_simplest_possible.txt | 100% |
-| 02_two_users.txt | 100% |
-| 03_five_users.txt | 80% |
-| 04_one_interferer.txt | 0% |
-| 05_equatorial_plane.txt | 99.8% |
-| 06_partially_fullfillable.txt | 76.68% |
-| 07_eighteen_planes.txt | 97.8% |
-| 08_eighteen_planes_northern.txt | 78.92% |
-| 09_ten_thousand_users.txt | 90.55% |
-| 10_ten_thousand_users_geo_belt.txt | 81.45% |
-| 11_one_hundred_thousand_users.txt | 29.25% |
+| Test | v0 | brute |
+| ---- | -- | ----- |
+| 00_example.txt | 100% | 100% |
+| 01_simplest_possible.txt | 100% | 100% |
+| 02_two_users.txt | 100% | 100% |
+| 03_five_users.txt | 80% | 80% |
+| 04_one_interferer.txt | 0% | 0% |
+| 05_equatorial_plane.txt | 99.8% | ? |
+| 06_partially_fullfillable.txt | 76.68% | ? |
+| 07_eighteen_planes.txt | 97.8% | ? |
+| 08_eighteen_planes_northern.txt | 78.92% | ? |
+| 09_ten_thousand_users.txt | 90.55% | ? |
+| 10_ten_thousand_users_geo_belt.txt | 81.45% | ? |
+| 11_one_hundred_thousand_users.txt | 29.25% | ? |
