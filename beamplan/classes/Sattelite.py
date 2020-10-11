@@ -117,8 +117,8 @@ class Sattelite(Entity):
                     existingBeams[userID] = self.id
                     break
                 else:
-                    # Define a tracker variable to determine if a beam was added
-                    beamAdded = False
+                    # Define a tracker variable to determine an invariant was broken
+                    beamPossible = True
 
                     # For each of the beams that match in color
                     for beam in matching:
@@ -127,18 +127,19 @@ class Sattelite(Entity):
                         userB = getUser(beam.getUserID())
 
                         # Calculate the angle between userA and userB given the sattelite
-                        angle = calculateAngle(Entity(None, self.x, self.y, self.z), userA, userB)
+                        angle = calculateAngle(Entity(None, self.x, self.y, self.z, None), userA, userB)
 
-                        # If the angle is greater than (or equal to) the maximum
-                        if angle >= starlinkInterferenceAngle:
-                            # Add the beam
-                            self.addBeam(userID, color)
-                            existingBeams[userID] = self.id
-                            beamAdded = True
+                        # If the angle is less than the maximum
+                        if angle < starlinkInterferenceAngle:
+                            # Cannot add the beam, invariant broken
+                            beamPossible = False
                             break
                     
-                    # If a beam was added, break from the parent loop (move on)
-                    if beamAdded:
+                    # If the beam is possible after constraint checking
+                    if beamPossible:
+                        # Add the beam
+                        self.addBeam(userID, color)
+                        existingBeams[userID] = self.id
                         break
         
         return existingBeams

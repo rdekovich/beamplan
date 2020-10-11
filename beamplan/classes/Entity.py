@@ -32,9 +32,9 @@ class Entity:
         """
 
         self.id = id
-        self.x = x
-        self.y = y
-        self.z = z
+        self.x = float(x)
+        self.y = float(y)
+        self.z = float(z)
         self.type = type
     
     def getID(self):

@@ -12,7 +12,7 @@ __status__ = "Development"
 from beamplan.classes.Entity import Entity
 from beamplan import origin, userVisibleAngle, externalInterferenceAngle
 
-from math import sqrt, acos, degrees, floor
+from math import sqrt, acos, degrees, floor, pow
 
 def calculateAngle(v: Entity, a: Entity, b: Entity):
     """
@@ -63,7 +63,7 @@ def satteliteIsVisible(user: Entity, sattelite: Entity):
         (boolean) -- True if the sattelite is visible to the user, False otherwise 
     """
 
-    return calculateAngle(user, origin, sattelite) > 180.0 - userVisibleAngle
+    return not (calculateAngle(user, origin, sattelite) <= 180.0 - userVisibleAngle)
 
 def isExternalInterference(user: Entity, interference: Entity, sattelite: Entity):
     """
@@ -78,5 +78,4 @@ def isExternalInterference(user: Entity, interference: Entity, sattelite: Entity
     Returns:
         (boolean) -- True if there is an interference, False if there is not
     """
-
-    return not (calculateAngle(user, sattelite, interference) < externalInterferenceAngle)
+    return calculateAngle(user, sattelite, interference) < externalInterferenceAngle

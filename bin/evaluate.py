@@ -8,6 +8,7 @@ experience metrics.
 import sys
 from collections import namedtuple
 from math import sqrt, acos, degrees, floor
+from os.path import abspath
 
 # A type for our 3D points.
 # In this scenario, units are in km.
@@ -392,6 +393,9 @@ def main() -> int:
     # scenario['sats'][sat_id] = position as a Vector3
     # scenario['users'][user_id] = position as a Vector3
     # scenario['interferers'][interferer_id] = position as a Vector3
+
+    # Make all print statements go to stdout
+    sys.stdout = open(abspath("../var/tests/output.txt"), "a")
 
     if not read_scenario(sys.argv[1], scenario):
         return -1

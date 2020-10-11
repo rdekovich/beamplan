@@ -65,13 +65,6 @@ def main(infile, debug):
             if satteliteIsVisible(user, sattelite):
                 # Add this user to the list of viable users for this sattelite
                 sattelite.addViableUser(userID)
-        
-        # For each of the interferences
-        for interferenceID, interference in interferences.items():
-            # If this sattelite is visible to this user (constraint)
-            if satteliteIsVisible(user, interference):
-                # Add this interference to the list of possible interferences for the user
-                user.addPossibleInterference(interferenceID)
     
     # For each sattelite (Runtime: numSattelites * numViableUsers[N] * numPossInterference[N])
     for _, sattelite in sattelites.items():
@@ -80,13 +73,10 @@ def main(infile, debug):
 
         # For each of the viable users for this sattelite
         for viableUserID in viableUsers:
-            # Acquire the list of possible interferences for this user
-            possibleInterferences = users[viableUserID].getPossibleInterferences()
-
             # For each possible interference that the user can have
-            for interferenceID in possibleInterferences:
+            for _, interference in interferences.items():
                 # If there is an external interference between these..
-                if isExternalInterference(users[viableUserID], interferences[interferenceID], sattelite):
+                if isExternalInterference(users[viableUserID], interference, sattelite):
                     # Remove this user from the list of viable users for this sattelite
                     sattelite.removeViableUser(viableUserID)
                     break
@@ -105,9 +95,19 @@ def main(infile, debug):
         # Connect to as many beams as possible given the constraints
         sattelite.beamFactory(existing, getUser)
     
+    # If the user specific debug mode
+    outfile = None
+    if debug:
+        # Open an output file (and create it) in the same place as the infile
+        outfile = open(abspath(infile) + '.out', 'w')
+    
     # For each sattelite
     for _, sattelite in sattelites.items():
         # For each of the beams in the sattelites
         for beam in sattelite.getBeams():
-            print(beam)
+            # If the user specified debug mode
+            if debug:
+                outfile.write("{}\n".format(beam))
+            else:
+                print(beam)
     
