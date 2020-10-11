@@ -1,5 +1,5 @@
 """
-Package root for the beamplan.module subpackage and initialization.
+Package root for the classes subpackage and initialization.
 
 This file, __init__.py, is required for package structuring
 purposes.  This file makes Python treat directories containing

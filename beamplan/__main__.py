@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3.9
 
 """
 Main module called upon invocation to the beamplan package.
@@ -21,8 +21,10 @@ __email__ = "dekovich@umich.edu"
 __status__ = "Development"
 
 import click
+from os.path import abspath
 
 from beamplan.modules.validate import validateInfile
+from beamplan.modules.parse import parseInfile
 
 @click.command(help="A command-line tool to determine Starlink beam planning.")
 @click.argument("infile")
@@ -50,3 +52,6 @@ def main(infile, debug):
     except OSError as e:
         print("OSError: {}".format(e))
         exit()
+    
+    # Parse the input file into it's respective mappings and classes
+    users, sattelites, interferences = parseInfile(abspath(infile))
