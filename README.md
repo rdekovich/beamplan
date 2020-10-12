@@ -36,7 +36,9 @@ These instructions were tested for Ubuntu 20.04+, and can likely be applied to m
 
 #### Install Python
 
-First, the latest version of Python (3.X) must be installed in order to to get the rest of the environment set up.
+First, the latest version of Python (3.X) must be installed in order to to get the rest of the environment set up.  
+
+The instructions below are prescribed for a bash UNIX shell user.  If you happen to not be using this set up...no worries!  A reference for Python installation for most Linux systems can be found [here](https://www.dummies.com/programming/python/how-to-install-python-on-a-linux-system/).
 
 1. Open a terminal on your Linux machine.
 2. Update your Ubuntu package manager, `apt`, with the following command:
@@ -61,7 +63,9 @@ If it reverberates with the latest version you installed, your set up for Python
 
 #### Install `venv`
 
-Once Python is installed, it is **highly** recommended to install [venv](https://docs.python.org/3/library/venv.html), a lightweight Python virtual environment package.  It is simple to set up and very useful for controlling a development environment.
+Once Python is installed, it is **highly** recommended to install `venv`, a lightweight Python virtual environment package.  It is simple to set up and very useful for controlling a development environment.
+
+The instructions below are prescribed for a bash UNIX shell user.  If you happen to not be using this set up...no worries!  A reference to install `venv` can be found [here](https://docs.python.org/3/library/venv.html).
 
 1. Open a terminal on your Linux machine.
 2. Run the following package install command to install the `venv` module
@@ -84,7 +88,7 @@ The rest of the instructions for the package follow the same idea as the rest of
 
 ## 🚀 Building and running for production
 
-After following and verifying the instructions to set up your environment, clone the repository.
+After following and verifying the instructions to set up your environment, clone the repository if you do not have it already.
 
 ```
 $ git clone https://github.com/rdekovich/beamplan.git
@@ -96,7 +100,7 @@ Navigate into the repository.
 $ cd beamplan/
 ```
 
-Create a virtual environment (in this case, it's named `env`) with Python `venv`, and source it open.
+Create a virtual environment (in this case, it's named `env`) with Python `venv`, and source it open.  This is for bash UNIX shell.  Follow the `venv` reference documents [here](https://docs.python.org/3/library/venv.html#venv-def) to create a virtual environment for your project clone.
 
 ```
 $ python3 -m venv env
