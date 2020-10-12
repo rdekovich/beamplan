@@ -412,6 +412,7 @@ code {
 <p>These instructions were tested for Ubuntu 20.04+, and can likely be applied to most Debian-based systems.</p>
 <h4 id="install-python">Install Python</h4>
 <p>First, the latest version of Python (3.X) must be installed in order to to get the rest of the environment set up.</p>
+<p>The instructions below are prescribed for a bash UNIX shell user.  If you happen to not be using this set up...no worries!  A reference for Python installation for most Linux systems can be found <a href="https://www.dummies.com/programming/python/how-to-install-python-on-a-linux-system/">here</a>.</p>
 <ol>
 <li>Open a terminal on your Linux machine.</li>
 <li>Update your Ubuntu package manager, <code>apt</code>, with the following command:</li>
@@ -428,7 +429,8 @@ code {
 </div></code></pre>
 <p>If it reverberates with the latest version you installed, your set up for Python is complete.  If not, please refer to this in-depth <a href="https://realpython.com/installing-python/#how-to-install-python-on-linux">guide</a> with troubleshooting and other methods of installation.</p>
 <h4 id="install-venv">Install <code>venv</code></h4>
-<p>Once Python is installed, it is <strong>highly</strong> recommended to install <a href="https://docs.python.org/3/library/venv.html">venv</a>, a lightweight Python virtual environment package.  It is simple to set up and very useful for controlling a development environment.</p>
+<p>Once Python is installed, it is <strong>highly</strong> recommended to install <code>venv</code>, a lightweight Python virtual environment package.  It is simple to set up and very useful for controlling a development environment.</p>
+<p>The instructions below are prescribed for a bash UNIX shell user.  If you happen to not be using this set up...no worries!  A reference to install <code>venv</code> can be found <a href="https://docs.python.org/3/library/venv.html">here</a>.</p>
 <ol>
 <li>Open a terminal on your Linux machine.</li>
 <li>Run the following package install command to install the <code>venv</code> module</li>
@@ -442,13 +444,13 @@ code {
 <p>The rest of the instructions for the package follow the same idea as the rest of the document.</p>
 <h1 id=""></h1>
 <h2 id="%F0%9F%9A%80-building-and-running-for-production">🚀 Building and running for production</h2>
-<p>After following and verifying the instructions to set up your environment, clone the repository.</p>
+<p>After following and verifying the instructions to set up your environment, clone the repository if you do not have it already.</p>
 <pre class="hljs"><code><div>$ git clone https://github.com/rdekovich/beamplan.git
 </div></code></pre>
 <p>Navigate into the repository.</p>
 <pre class="hljs"><code><div>$ cd beamplan/
 </div></code></pre>
-<p>Create a virtual environment (in this case, it's named <code>env</code>) with Python <code>venv</code>, and source it open.</p>
+<p>Create a virtual environment (in this case, it's named <code>env</code>) with Python <code>venv</code>, and source it open.  This is for bash UNIX shell.  Follow the <code>venv</code> reference documents <a href="https://docs.python.org/3/library/venv.html#venv-def">here</a> to create a virtual environment for your project clone.</p>
 <pre class="hljs"><code><div>$ python3 -m venv env
 $ source env/bin/activate
 </div></code></pre>
@@ -485,7 +487,7 @@ $ source env/bin/activate
 <td><code>$ beamplan infile.txt --debug</code></td>
 </tr>
 <tr>
-<td>--help, -h</td>
+<td>--help</td>
 <td>No</td>
 <td>Package help string for this table</td>
 <td><code>$ beamplan --help</code></td>
@@ -500,56 +502,69 @@ $ source env/bin/activate
 <tr>
 <th>Test</th>
 <th>v0</th>
+<th>brute</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>00_example.txt</td>
 <td>100%</td>
+<td>100%</td>
 </tr>
 <tr>
 <td>01_simplest_possible.txt</td>
+<td>100%</td>
 <td>100%</td>
 </tr>
 <tr>
 <td>02_two_users.txt</td>
 <td>100%</td>
+<td>100%</td>
 </tr>
 <tr>
 <td>03_five_users.txt</td>
+<td>80%</td>
 <td>80%</td>
 </tr>
 <tr>
 <td>04_one_interferer.txt</td>
 <td>0%</td>
+<td>0%</td>
 </tr>
 <tr>
 <td>05_equatorial_plane.txt</td>
 <td>99.8%</td>
+<td>?</td>
 </tr>
 <tr>
 <td>06_partially_fullfillable.txt</td>
 <td>76.68%</td>
+<td>?</td>
 </tr>
 <tr>
 <td>07_eighteen_planes.txt</td>
 <td>97.8%</td>
+<td>?</td>
 </tr>
 <tr>
 <td>08_eighteen_planes_northern.txt</td>
 <td>78.92%</td>
+<td>?</td>
 </tr>
 <tr>
 <td>09_ten_thousand_users.txt</td>
 <td>90.55%</td>
+<td>?</td>
 </tr>
 <tr>
 <td>10_ten_thousand_users_geo_belt.txt</td>
 <td>81.45%</td>
+<td>?</td>
 </tr>
 <tr>
 <td>11_one_hundred_thousand_users.txt</td>
 <td>29.25%</td>
+<td>?</td>
 </tr>
 </tbody>
 </table>
